@@ -7,7 +7,6 @@ import logging
 import logging.handlers
 import os
 import sys
-import shutil
 import subprocess
 
 from theforestadmin.core.Utils import read_file
@@ -28,7 +27,7 @@ def main(args=None):
     if config is None:
         raise Exception("Configuration can't be None")
     logger.info(config)
-    logger.debug("NO MORE ACTIONS IMPLEMENTED")
+    logger.debug("NO MORE ACTIONS IMPLEMENTED")    
 
 
 def before_cmd(args=None):
