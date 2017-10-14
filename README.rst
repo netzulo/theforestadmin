@@ -10,30 +10,26 @@ Setup
 ```python setup.py install```
 
 
-Tests
-*****
-
-```python setup.py test```
-
-
 Server Usage
 ************
 
 ::
     
-    server.py --help
+    ~root# server.py --help
+    usage: server.py [-h] [-v] [-c CONFIG_PATH]
 
+    Performs TheForest server operations
 
-Deploy Usage
-************
+    optional arguments:
+        -h, --help            show this help message and exit
+        -v, --verbose         Activate DEBUG level
+        -c CONFIG_PATH, --config_path CONFIG_PATH
+                              Path for custom JSON config
 
-::
-    
-    deploy.py --help
+    ----- help us on , https://github.com/netzulo/theforestadmin -------
 
-
-Configuration files examples
-----------------------------
+Configuration file
+------------------
 
 + Server script configuration
 
@@ -44,18 +40,13 @@ Configuration files examples
 ::
 
     {
-        "TODO":"fillup"
-    }
-
-
-+ Deploy script configuration
-
-.. highlight:: json
-.. code-block:: json
-   :linenos:
-
-::
-
-    {
-        "TODO":"fillup"
+        "build": {
+            "src_path": "",
+            "dst_path": "",
+            "oxide": {
+                "enabled": true,
+                "custom": true
+            },
+            "plugins": false
+        }
     }
