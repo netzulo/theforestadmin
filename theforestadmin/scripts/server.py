@@ -27,7 +27,8 @@ def main(args=None):
     if config is None:
         raise Exception("Configuration can't be None")
     logger.info(config)
-    logger.debug("NO MORE ACTIONS IMPLEMENTED")    
+    logger.debug("NO MORE ACTIONS IMPLEMENTED")
+    logger.info("Terminated execution")
 
 
 def before_cmd(args=None):
