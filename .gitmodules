@@ -1,0 +1,6 @@
+[submodule "modules\\Oxide"]
+	path = modules\\Oxide
+	url = https://github.com/OxideMod/Oxide
+[submodule "modules/Steam"]
+	path = modules/Steam
+	url = http://ntz-git.tk/TheForest/Steam
