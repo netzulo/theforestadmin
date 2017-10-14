@@ -7,7 +7,7 @@ Command line tool written on python to setup TheForest Servers
 Setup
 *****
 
-```python setup.py install```
+``python setup.py install``
 
 
 Server Usage
@@ -15,7 +15,6 @@ Server Usage
 
 ::
     
-    ~root# server.py --help
     usage: server.py [-h] [-v] [-c CONFIG_PATH]
 
     Performs TheForest server operations
