@@ -27,6 +27,14 @@ def main(args=None):
     if config is None:
         raise Exception("Configuration can't be None")
     logger.info(config)
+
+    # clonar los modulos
+    # copiar steam en SERVER_PATH
+    # si aplica, copiar Oxide en SERVER_PATH
+    # si aplica, copiar [plugin, plugin] en SERVER_PATH
+    # copiar segun config en SERVER_CONFIG_PATH
+    # TODO: start server using JSON config
+
     logger.debug("NO MORE ACTIONS IMPLEMENTED")
     logger.info("Terminated execution")
 
