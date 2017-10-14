@@ -1,3 +1,11 @@
-{
-    "script_name": "server"
+{        
+    "build": {
+        "src_path": "",
+        "dst_path": "",
+        "oxide": {
+            "enabled": true,
+            "custom": true
+        },
+        "plugins": false      
+    }
 }
