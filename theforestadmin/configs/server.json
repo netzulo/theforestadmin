@@ -14,7 +14,7 @@
         { "name":"-servername", "value":"\"-- [24/7][max:100] netzulo.com\"" },
         { "name":"-serverplayers", "value":"100" },
         { "name":"-serverpassword", "value":"\"\"" },
-        { "name":"-serverpassword_admin", "value":"urtensia" },
+        { "name":"-serverpassword_admin", "value":"0123456789" },
         { "name":"-serversteamaccount", "value":"" },
         { "name":"-serverautosaveinterval", "value":"15" },
         { "name":"-enableVAC", "value":"" },
