@@ -33,21 +33,21 @@ def main(args=None):
     if config is None:
         raise Exception("Configuration can't be None")
     logger.info(config)
+    # LOADED
+    server_path = config['server_path']
+    exe_path = "{}{}".format(server_path, EXE_NAME)
+    params = [exe_path]
+    msg_deploy = "New server ready at'{}'".format(server_path)
+
     if args.deploy:
         cmd_deploy(config=config, logger=logger)
+        logger.info(msg_deploy)
     if args.start:
-        params = []
-        server_path = config['server_path']
-        exe_path = "{}{}".format(server_path, EXE_NAME)
         for param in config['options']:
-            params.extend(param['name'])
-            params.extend(' ')
-            params.extend(param['value'])
-            params.extend(' ')
-        logger.info("Starting server with params: {} {}"
-                    "".format(exe_path, "".join(params)))
+            params.extend(' {}'.format(param))
+        # START
+        logger.info('CMD: %s', "".join(params))
         subprocess.call(params)
-    logger.info("Terminated execution")
 
 
 def cmd_deploy(config=None, logger=None):
@@ -60,25 +60,42 @@ def cmd_deploy(config=None, logger=None):
     ]
     for module in modules:
         module_path = 'modules/{}'.format(module['name'])
-        custom_path = 'modules/{}/{}'.format(module['name'], 'Bundles/TheForest/')        
+        custom_path = 'modules/{}/{}'.format(
+            module['name'], 'Bundles/TheForest/')
+        # just message templates
+        msg_disabled = 'Disabled module: {}'.format(module['name'])
+        msg_enabled = 'Enabled module: {}'.format(module['name'])
+        msg_copy_module = "copy: from={} to={}".format(
+            module_path, config['server_path'])
+        msg_copy_custom = "copy: from={} to={}".format(
+            custom_path, config['server_path'])
+        # modules logic
         if not module['enabled']:
-            logger.warning("Disabled module: {}".format(module['name']))
+            logger.warning(msg_disabled)
         else:
-            logger.info('Apply module: {}'.format(module['name']))
+            logger.info(msg_enabled)
             if module['name'] == 'Steam':
-                logger.debug("copy: from={} to={}"
-                             "".format(module_path, config['server_path']))
+                logger.debug(msg_copy_module)
                 copy_tree(module_path, config['server_path'])
             if module['name'] == 'Oxide':
                 if module['custom']:
-                    logger.debug("copy: from={} to={}".format(
-                        custom_path, config['server_path']))
+                    logger.debug(msg_copy_custom)
                     copy_tree(custom_path, config['server_path'])
-                # TODO else: stable, descargar, descomprimir, y pegar en SERVER_PATH
+                else:
+                    # TODO: test code first
+                    # stable builds steps:
+                    # download
+                    #import wget
+                    #wget.download(url, out='path/path/')
+                    # unzip
+                    #import zipfile
+                    # move to SERVER_PATH
+                    #with zipfile.ZipFile("file.zip","r") as zip_ref:
+                    #zip_ref.extractall("target_dir")
+                    #copy_tree("target_dir", config['server_path'])
+                    pass
             if module['name'] == 'Plugins':
                 shutil.copy2(module_path, config['server_path'])
-            logger.info('Applied module: {}'.format(module['name']))
-    return None
 
 def before_cmd(args=None):
     """Generate logs folder, instance argparse and return it"""
