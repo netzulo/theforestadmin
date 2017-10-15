@@ -6,14 +6,15 @@
         "plugins":{ "name": "Plugins", "enabled": false }
     },
     "options":[
+        "-nosteamclient",
         "-serverip \"0.0.0.0\"",
         "-serversteamport 27015",
         "-servergameport 27015",
         "-serverqueryport 27016",
-        "-servername  \"[24/7][max:100]netzulo.com\"",
+        "-servername  \"-- [24/7][max:100]netzulo.com\"",
         "-serverplayers 100",
         "-serverpassword \"\"",
-        "-serverpassword_admin \"0123456789\"",
+        "-serverpassword_admin \"0123456789\"",        
         "-serversteamaccount \"\"",        
         "-serverAutoSaveInterval 15",
         "-difficulty Normal",
@@ -21,6 +22,6 @@
         "-slot 1",
         "-enableVAC on",
         "-showLogs on",
-        "-serverContact \"netzuleando@gmail.com\""
+        "-serverContact \"netzuleando@gmail.com\""        
     ]
 }

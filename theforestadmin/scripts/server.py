@@ -10,11 +10,14 @@ import os
 import sys
 import shutil
 import subprocess
+from subprocess import Popen
+from subprocess import PIPE
+from subprocess import STDOUT
 from theforestadmin.core.Utils import copy_tree
 from theforestadmin.core.Utils import read_file
 
 
-EXE_NAME='TheForestDedicatedServer.exe'
+EXE_NAME = 'TheForestDedicatedServer.exe'
 
 
 def main(args=None):
@@ -35,8 +38,7 @@ def main(args=None):
     logger.info(config)
     # LOADED
     server_path = config['server_path']
-    exe_path = "{}{}".format(server_path, EXE_NAME)
-    params = [exe_path]
+    params = [EXE_NAME]
     msg_deploy = "New server ready at'{}'".format(server_path)
 
     if args.deploy:
@@ -46,6 +48,8 @@ def main(args=None):
         for param in config['options']:
             params.extend(' {}'.format(param))
         # START
+        logger.info('CMD: cd %s', server_path)
+        os.chdir(server_path)
         logger.info('CMD: %s', "".join(params))
         subprocess.call(params)
 
