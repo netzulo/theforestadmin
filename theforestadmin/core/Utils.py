@@ -6,9 +6,12 @@ Utils tasks
 """
 
 
+import json
+import shutil
 from sys import version_info
 from os import path
-import json
+from os import listdir
+from os import makedirs
 
 
 def path_format(file_path=None, file_name=None, is_abspath=False, ignore_raises=False):
@@ -57,3 +60,43 @@ def settings():
                      file_path=path_format(file_path='qacode/configs/',
                                            file_name='settings.json',
                                            is_abspath=True))
+
+
+
+def force_merge_flat_dir(src_dir, dst_dir):
+    """TODO"""
+    if not path.exists(dst_dir):
+        makedirs(dst_dir)
+    for item in listdir(src_dir):
+        src_file = path.join(src_dir, item)
+        dst_file = path.join(dst_dir, item)
+        force_copy_file(src_file, dst_file)
+
+def force_copy_file(src_file, dst_file):
+    """TODO"""
+    if path.isfile(src_file):
+        shutil.copy2(src_file, dst_file)
+
+def is_flat_dir(src_dir):
+    """TODO"""
+    for item in listdir(src_dir):
+        src_item = path.join(src_dir, item)
+        if path.isdir(src_item):
+            return False
+    return True
+
+def copy_tree(src, dst):
+    """Allows to copy recursively and overwrite directory"""
+    for item in listdir(src):
+        src_path = path.join(src, item)
+        dst_path = path.join(dst, item)
+        if path.isfile(src_path):
+            if not path.exists(dst):
+                makedirs(dst)
+            force_copy_file(src_path, dst_path)
+        if path.isdir(src_path):
+            is_recursive = not is_flat_dir(src_path)
+            if is_recursive:
+                copy_tree(src_path, dst_path)
+            else:
+                force_merge_flat_dir(src_path, dst_path)

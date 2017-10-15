@@ -1,11 +1,26 @@
-{        
-    "build": {
-        "src_path": "",
-        "dst_path": "",
-        "oxide": {
-            "enabled": true,
-            "custom": true
-        },
-        "plugins": false      
-    }
+{
+    "server_path": "D:/0.programms/Steam/steamapps/common/TheForestDedicatedServer/",
+    "modules": {
+        "steam":{ "name": "Steam", "enabled": true },
+        "oxide":{ "name": "Oxide", "enabled": true, "custom": true },
+        "plugins":{ "name": "Plugins", "enabled": false }
+    },
+    "options":[
+        { "name":"-nosteamclient", "value":"" },
+        { "name":"-serverip", "value":"0.0.0.0" },
+        { "name":"-serversteamport", "value":"27015" },
+        { "name":"-servergameport", "value":"27016" },
+        { "name":"-serverqueryport", "value":"27016" },
+        { "name":"-servername", "value":"\"-- [24/7][max:100] netzulo.com\"" },
+        { "name":"-serverplayers", "value":"100" },
+        { "name":"-serverpassword", "value":"\"\"" },
+        { "name":"-serverpassword_admin", "value":"urtensia" },
+        { "name":"-serversteamaccount", "value":"" },
+        { "name":"-serverautosaveinterval", "value":"15" },
+        { "name":"-enableVAC", "value":"" },
+        { "name":"-difficulty", "value":"Normal" },
+        { "name":"-inittype", "value":"Continue" },
+        { "name":"-slot", "value":"1" },
+        { "name":"-showlogs", "value":"on" }
+    ]
 }
